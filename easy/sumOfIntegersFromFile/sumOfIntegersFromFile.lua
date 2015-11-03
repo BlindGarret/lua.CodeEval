@@ -17,6 +17,9 @@ function lineByLineFileIter(t)
     end
 end
 
+sum = 0
 for line in lineByLineFileIter(arg[1]) do
-	--Code here
+    sum = sum + tonumber(line)
 end
+
+print(sum)
