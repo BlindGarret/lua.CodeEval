@@ -172,6 +172,15 @@ function max(tbl)
 	return val
 end
 
+function min(tbl)
+	local val = tbl[1]
+	for i = 2, #tbl do
+		if val > tbl[i] then val = tbl[i] end
+	end
+
+	return val
+end
+
 function fileSize(file)
 	local currentPointer = file:seek()
 	local size = file:seek("end")
@@ -291,4 +300,24 @@ function isSelfDescribingNumber(integer)
         end
     end
     return success
+end
+
+function unique(tbl)
+    local hashSet = {}
+    for _,v in pairs(tbl) do
+    	if hashSet[v] == nil then
+    		hashSet[v] = 1
+    	else
+    		hashSet[v] = hashSet[v] + 1
+    	end
+    end
+
+    local returnSet = {}
+    for k,v in pairs(hashSet) do
+    	if v == 1 then
+        	returnSet[#returnSet+1] = k
+        end
+    end
+
+    return returnSet
 end
